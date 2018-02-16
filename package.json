@@ -4,7 +4,7 @@
   "description": "",
   "main": "handler.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava"
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +12,7 @@
     "moment": "^2.20.1"
   },
   "devDependencies": {
+    "ava": "^0.25.0",
     "serverless-offline": "^3.17.0",
     "serverless-plugin-optimize": "^3.0.4-rc.1"
   }

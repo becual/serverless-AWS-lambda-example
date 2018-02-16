@@ -1,5 +1,10 @@
-
 service: lambda-test
+
+# exclude the code coverage files and circle ci files
+package:
+  exclude:
+  - coverage/**
+  - .circleci/**
 
 provider:
   name: aws

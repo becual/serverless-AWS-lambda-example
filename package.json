@@ -6,7 +6,8 @@
   "scripts": {
     "test": "node_modules/.bin/nyc --reporter=lcov --reporter=text --check-coverage --lines 95 --functions 95 --branches 95 node node_modules/.bin/ava -v ./**/*ava.test.js",
     "test:report": "node_modules/.bin/nyc report --reporter=lcov --reporter=lcov --check-coverage --lines 95 --functions 95 --branches 95 node node_modules/.bin/ava -v ./**/*ava.test.js",
-    "test:watch": "node node_modules/.bin/ava --verbose --watch ./**/*ava.test.js"
+    "test:watch": "npm run offline && node node_modules/.bin/ava --verbose --watch ./**/*ava.test.js",
+    "offline": "sls offline start &"
   },
   "author": "",
   "license": "ISC",
@@ -15,6 +16,7 @@
   },
   "devDependencies": {
     "ava": "^0.25.0",
+    "axios": "^0.17.1",
     "nyc": "^11.4.1",
     "serverless-offline": "^3.17.0",
     "serverless-plugin-optimize": "^3.0.4-rc.1"

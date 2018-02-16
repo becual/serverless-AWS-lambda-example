@@ -1,0 +1,23 @@
+
+service: lambda-test
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          path: becual/hello
+          method: get
+  bye:
+    handler: handler.bye
+    events:
+      - http:
+          path: becual/bye
+          method: get
+plugins:
+  - serverless-offline
+  - serverless-plugin-optimize

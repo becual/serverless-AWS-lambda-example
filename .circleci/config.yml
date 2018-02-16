@@ -26,7 +26,13 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: yarn install
+      #- run: yarn install
+
+      - run:
+          name: Install Serverless CLI and dependencies
+          command: |
+            sudo npm i -g serverless
+            npm install
 
       - save_cache:
           paths:
@@ -36,4 +42,6 @@ jobs:
       # run tests!
       - run: yarn test
 
-
+      - run:
+          name: Deploy application
+          command: sls deploy

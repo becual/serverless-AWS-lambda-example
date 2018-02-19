@@ -27,10 +27,9 @@ jobs:
           name: Run tests
           command: |
             yarn offline
-            yarn add ava tap-xunit --dev # or you could use npm
+            yarn add ava tap-xunit --dev
             mkdir -p ~/reports
             yarn test:ci
-            # ava --tap | tap-xunit > ~/reports/ava.xml
           when: always
       - store_test_results:
           path: ~/reports

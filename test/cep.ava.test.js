@@ -12,5 +12,5 @@ test('axios', async t => {
     let response = await axios.get('http://localhost:3000/becual/bye');
 
     t.is(response.status, 200);
-    t.is(response.data.cep, 'CEP');
+    t.is(response.data.cep, 'CEPx');
 });

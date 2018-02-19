@@ -30,7 +30,7 @@ jobs:
             yarn add ava tap-xunit --dev # or you could use npm
             mkdir -p ~/reports
             yarn test:ci
-            # ava --tap | tap-xunit > /reports/ava.xml
+            # ava --tap | tap-xunit > ~/reports/ava.xml
           when: always
       - store_test_results:
           path: ~/reports

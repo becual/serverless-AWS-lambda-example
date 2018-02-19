@@ -23,6 +23,17 @@ jobs:
             sudo npm i -g serverless
             yarn install
 
+      - run:
+          command: |
+            yarn add ava tap-xunit --dev # or you could use npm
+            mkdir -p ~/reports
+            ava --tap | tap-xunit > /reports/ava.xml
+          when: always
+      - store_test_results:
+          path: ~/reports
+      - store_artifacts:
+          path: ~/reports 
+
       - save_cache:
           paths:
             - node_modules

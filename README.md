@@ -1,22 +1,22 @@
-# AWS Lambda
+# Serverless AWS lambda example
 This repo explain how to create a AWS lambda test with serverless framework and deploy with CircleCI
 
 ## Quick Start
 
 Install serverless framework via npm or yarn
 
-```bash
+```
 npm install -g serverless
 ```
 
 Setup AWS credentials via **severless command**
 
-```bash
+```
 serverless config credentials --provider aws --key AKIAIOSFODNN7EXAMPLE --secret wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 ```
 or Setup AWS credentials via **aws-cli**
 
-```bash
+```
 $ aws configure
 AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE
 AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
@@ -30,15 +30,15 @@ Default output format [None]: ENTER
 
 Install serverless offline and other dependencies
 
-```bash
+```
 npm install
 ```
 
- ### Run serverless in local mode
+### Run serverless in local mode
 
 **serverless-offline** pluging provide test lambda functions in local mode using **sls offline start** command
 
- ```bash
+```
 $ sls offline start
 Serverless: Starting Offline: dev/us-east-1.
 
@@ -50,7 +50,7 @@ Serverless: GET /becual/bye
 
 Serverless: Offline listening on http://localhost:3000
 
- ```
+```
 
 ## Configuration
 

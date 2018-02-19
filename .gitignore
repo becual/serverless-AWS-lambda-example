@@ -3,6 +3,7 @@ node_modules
 jspm_packages
 coverage
 .nyc_output
+yarn.lock
 
 # Serverless directories
 .serverless

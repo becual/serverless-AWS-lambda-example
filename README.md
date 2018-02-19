@@ -35,12 +35,22 @@ npm install
 ```
 
  ### Run serverless in local mode
- 
- ```bash
- npm run offline
- ```
 
-### Verify
+**serverless-offline** pluging provide test lambda functions in local mode using **sls offline start** command
+
+ ```bash
+$ sls offline start
+Serverless: Starting Offline: dev/us-east-1.
+
+Serverless: Routes for hello:
+Serverless: GET /becual/hello
+
+Serverless: Routes for bye:
+Serverless: GET /becual/bye
+
+Serverless: Offline listening on http://localhost:3000
+
+ ```
 
 ## Configuration
 
@@ -85,6 +95,16 @@ plugins:
 ```
 ### CircleCI configuration
 
+The proposal of this configuration file is:
+
+- Install serverless dependencies in CircleCI
+- Install project dependencies in CircleCI
+- Create tap report
+- Create coverage report
+- Deploy the application en AWS
+
+IMPORTANT: To deploy in circle CI, add your AWS credentials in CircleCi web page to the **Project Settings** > **AWS Permissions** page in the CircleCI application. The Access Key ID and Secret Access Key that you entered are automatically available in your primary build container and exposed as ``AWS_ACCESS_KEY_ID`` and ``AWS_SECRET_ACCESS_KEY`` environment variables.
+
 ```yaml
 version: 2
 jobs:
@@ -93,7 +113,7 @@ jobs:
       # specify the version you desire here
       - image: circleci/node:7.10
 
-    working_directory: ~/repo
+    working_directory: ~/defaultDirectory
 
     steps:
       - checkout
@@ -123,6 +143,9 @@ jobs:
           path: ~/reports
       - store_artifacts:
           path: ~/reports
+      - store_artifacts:
+          path: "./coverage/lcov-report/"
+          destination: ~/reports
 
       - run:
           name: Deploy application

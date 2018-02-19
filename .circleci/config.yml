@@ -22,14 +22,19 @@ jobs:
           command: |
             sudo npm i -g serverless
             yarn install
-            yarn offline
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: yarn test
+      - run:
+          name: Run server in online mode
+          command: yarn offline
+
+      - run:
+          name: run tests
+          command: yarn test
 
       - run:
           name: Deploy application

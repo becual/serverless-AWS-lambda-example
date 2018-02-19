@@ -9,6 +9,7 @@ module.exports.hello = (event, context, callback) => {
     body: JSON.stringify({
       message: 'entregala los enevtos y la fecha!',
       input: event,
+      context: context,
       data: data.toDate()
     }),
   };

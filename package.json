@@ -4,7 +4,7 @@
   "description": "",
   "main": "handler.js",
   "scripts": {
-    "test:ci": "node_modules/.bin/ava --tap | tap-xunit > ~/reports/ava.xml",
+    "test:ci": "node_modules/.bin/nyc --reporter=lcov --reporter=text --check-coverage --lines 95 --functions 95 --branches 95 node node_modules/.bin/ava --tap | tap-xunit > ~/reports/ava.xml",
     "test": "node_modules/.bin/nyc --reporter=lcov --reporter=text --check-coverage --lines 95 --functions 95 --branches 95 node node_modules/.bin/ava -v ./**/*ava.test.js",
     "test:watch": "node node_modules/.bin/ava --verbose --watch ./**/*ava.test.js",
     "offline": "sls offline start &"

@@ -29,12 +29,10 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run:
-          name: Run server in online mode
-          command: yarn offline
-
-      - run:
-          name: run tests
-          command: yarn test
+          name: Run tests
+          command: |
+            yarn offline
+            yarn test
 
       - run:
           name: Deploy application

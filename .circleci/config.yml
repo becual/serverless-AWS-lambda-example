@@ -24,27 +24,24 @@ jobs:
             yarn install
 
       - run:
+          name: Run tests
           command: |
+            yarn offline
             yarn add ava tap-xunit --dev # or you could use npm
             mkdir -p ~/reports
-            ava --tap | tap-xunit > /reports/ava.xml
+            yarn test:ci
+            # ava --tap | tap-xunit > /reports/ava.xml
           when: always
       - store_test_results:
           path: ~/reports
       - store_artifacts:
-          path: ~/reports 
+          path: ~/reports
+
+      - run:
+          name: Deploy application
+          command: sls deploy
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-
-      - run:
-          name: Run tests
-          command: |
-            yarn offline
-            yarn test
-
-      - run:
-          name: Deploy application
-          command: sls deploy

@@ -37,7 +37,7 @@ jobs:
           path: ~/reports
       - store_artifacts:
           path: "./coverage/lcov-report/"
-          destination: ~/reports
+         # destination: ~/reports
 
       - run:
           name: Deploy application

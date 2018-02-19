@@ -83,7 +83,7 @@ plugins:
   - serverless-offline
   - serverless-plugin-optimize
 ```
-### CircleCi configuration
+### CircleCI configuration
 
 ```yaml
 version: 2

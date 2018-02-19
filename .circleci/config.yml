@@ -22,6 +22,7 @@ jobs:
           command: |
             sudo npm i -g serverless
             yarn install
+            yarn offline
 
       - save_cache:
           paths:

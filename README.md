@@ -1,7 +1,7 @@
 # Serverless AWS lambda example
-This repo explain how to create a AWS lambda test with serverless framework and deploy with CircleCI
+This repository explain how to create a AWS lambda test with serverless framework and deploy with CircleCI
 
-## Quick Start
+## Previous requirements
 
 Install serverless framework via npm or yarn
 
@@ -24,9 +24,12 @@ Default region name [None]: us-west-2
 Default output format [None]: ENTER
 ```
 
-## Run the project locally
 
-### Install dependencies
+## Quick Start
+
+This section explain how to run this project
+
+### 1.- Install dependencies
 
 Install serverless offline and other dependencies
 
@@ -34,9 +37,9 @@ Install serverless offline and other dependencies
 npm install
 ```
 
-### Run serverless in local mode
+### 2.- Run serverless in local mode
 
-**serverless-offline** pluging provide test lambda functions in local mode using **sls offline start** command
+**serverless-offline** plugin provide test lambda functions in local mode using **sls offline start** command
 
 ```
 $ sls offline start
@@ -54,11 +57,69 @@ Serverless: Offline listening on http://localhost:3000
 
 ## Configuration
 
-This section explain the configuration files.
+This section explain how to create a serverless project
+
+### Create a new serverless project
+
+```
+# Create a new Serverless Service/Project
+$ serverless create --template aws-nodejs --path serverless-example
+# Change into the newly created directory
+$ cd serverless-example
+
+```
+
+### Handler file
+
+`handler.js` file:
+
+```js
+var moment = require('moment');
+var cep = require('./cep');
+
+module.exports.hello = (event, context, callback) => {
+  var data = moment();
+  const response = {
+    statusCode: 200,
+    body: JSON.stringify({
+      message: 'entregala los enevtos y la fecha!',
+      input: event,
+      context: context,
+      data: data.toDate()
+    }),
+  };
+
+  callback(null, response);
+};
+
+
+module.exports.bye = async (event, context, callback) => {
+  var data = moment();
+  const response = {
+    statusCode: 200,
+    body: JSON.stringify({
+      bye: 'adios amiguito!',
+      cep: await cep()
+    }),
+  };
+
+  callback(null, response);
+};
+```
+
+### cep file
+
+`cep.js` file:
+
+```js
+module.exports = () => {
+    return Promise.resolve('CEP');
+}
+```
 
 ### Serverless configuration
 
-With this configuration file you can provide a lambda function with node 6.10 and two functions.
+With this configuration file (`serverless.yml`) you can provide a lambda function with node 6.10 and two functions.
 
 - With **serverless-offline** plugin you can run you lambda and API Gateway locally
 - With **serverless-plugin-optimize** plugin you can transpile you code to es5

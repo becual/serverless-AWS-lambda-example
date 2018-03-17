@@ -154,6 +154,27 @@ plugins:
   - serverless-offline
   - serverless-plugin-optimize
 ```
+
+### Install dependencies
+
+Install the minimal dependencies to run the project
+
+Create a `package.json` file
+```bash
+yarn init
+```
+
+Install dependencies
+```bash
+yarn add moment
+```
+
+Install development dependencies
+```bash
+yarn add serverless-offline --dev
+yarn add serverless-plugin-optimize --dev
+```
+
 ### CircleCI configuration
 
 The proposal of this configuration file is:
